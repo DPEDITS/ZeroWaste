@@ -1,111 +1,484 @@
+/* ============================================================
+   FULARANI FOUNDATION — COMPLETE DESIGN SYSTEM
+   Source: https://fularanifoundation.org/assets/index-DUa2Z2Yg.css
+   ============================================================ */
+
+/* --- Design Tokens (Root Variables) --- */
 :root {
-  --text: #6b6375;
-  --text-h: #08060d;
-  --bg: #fff;
-  --border: #e5e4e7;
-  --code-bg: #f4f3ec;
-  --accent: #aa3bff;
-  --accent-bg: rgba(170, 59, 255, 0.1);
-  --accent-border: rgba(170, 59, 255, 0.5);
-  --social-bg: rgba(244, 243, 236, 0.5);
-  --shadow:
-    rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
-
-  --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --mono: ui-monospace, Consolas, monospace;
-
-  font: 18px/145% var(--sans);
-  letter-spacing: 0.18px;
-  color-scheme: light dark;
-  color: var(--text);
-  background: var(--bg);
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-
-  @media (max-width: 1024px) {
-    font-size: 16px;
-  }
+  --background: #fff;
+  --foreground: #1a1a1a;
+  --card: #fff;
+  --card-foreground: #1a1a1a;
+  --primary: #06c;
+  --primary-foreground: #fff;
+  --secondary: #1a1a1a;
+  --secondary-foreground: #fff;
+  --muted: #f4f4f4;
+  --muted-foreground: #666;
+  --accent: #ffc20e;
+  --accent-foreground: #1a1a1a;
+  --destructive: #ff3b30;
+  --border: #e2e2e2;
+  --input: #e2e2e2;
+  --ring: #06c;
+  --radius: 8px;
+  --font-sans: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --spacing: 0.25rem;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --text: #9ca3af;
-    --text-h: #f3f4f6;
-    --bg: #16171d;
-    --border: #2e303a;
-    --code-bg: #1f2028;
-    --accent: #c084fc;
-    --accent-bg: rgba(192, 132, 252, 0.15);
-    --accent-border: rgba(192, 132, 252, 0.5);
-    --social-bg: rgba(47, 48, 58, 0.5);
-    --shadow:
-      rgba(0, 0, 0, 0.4) 0 10px 15px -3px, rgba(0, 0, 0, 0.25) 0 4px 6px -2px;
-  }
-
-  #social .button-icon {
-    filter: invert(1) brightness(2);
-  }
-}
-
-body {
-  margin: 0;
-}
-
-#root {
-  width: 1126px;
-  max-width: 100%;
-  margin: 0 auto;
-  text-align: center;
-  border-inline: 1px solid var(--border);
-  min-height: 100svh;
-  display: flex;
-  flex-direction: column;
+/* --- Base Reset & Body --- */
+*, *::before, *::after {
   box-sizing: border-box;
-}
-
-h1,
-h2 {
-  font-family: var(--heading);
-  font-weight: 500;
-  color: var(--text-h);
-}
-
-h1 {
-  font-size: 56px;
-  letter-spacing: -1.68px;
-  margin: 32px 0;
-  @media (max-width: 1024px) {
-    font-size: 36px;
-    margin: 20px 0;
-  }
-}
-h2 {
-  font-size: 24px;
-  line-height: 118%;
-  letter-spacing: -0.24px;
-  margin: 0 0 8px;
-  @media (max-width: 1024px) {
-    font-size: 20px;
-  }
-}
-p {
   margin: 0;
+  padding: 0;
 }
 
-code,
-.counter {
-  font-family: var(--mono);
-  display: inline-flex;
-  border-radius: 4px;
-  color: var(--text-h);
+html, body {
+  background-color: var(--background);
+  color: var(--foreground);
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  width: 100%;
+  font-family: var(--font-sans);
+  line-height: 1.6;
+  overflow-x: hidden;
 }
 
-code {
+/* --- Glass Nav (Exact Foundation Pattern) --- */
+.glass-nav {
+  background: #fbfbfdcc !important;
+  backdrop-filter: saturate(180%) blur(20px);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  position: sticky;
+  top: 0;
+  z-index: 9999;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  height: auto;
+  padding: 0;
+}
+
+.glass-nav .ff-nav-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 12px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.ff-logo {
+  font-size: 21px;
+  font-weight: 700;
+  letter-spacing: -0.022em;
+  color: #1d1d1f;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.ff-logo-icon {
+  width: 32px;
+  height: 32px;
+  background: linear-gradient(135deg, #34c759, #06c);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-weight: 900;
+  font-size: 14px;
+}
+
+.ff-nav-links {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.ff-nav-links a {
+  font-size: 14px;
+  font-weight: 500;
+  color: #424245;
+  text-decoration: none;
+  transition: color 0.2s ease;
+  letter-spacing: -0.01em;
+}
+
+.ff-nav-links a:hover {
+  color: #1d1d1f;
+}
+
+.ff-nav-cta {
+  background: var(--primary);
+  color: var(--primary-foreground) !important;
+  padding: 8px 20px !important;
+  border-radius: 980px;
+  font-size: 14px !important;
+  font-weight: 500 !important;
+  transition: all 0.2s ease;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.ff-nav-cta:hover {
+  background: #0077ed;
+}
+
+/* --- Apple Card (Exact Foundation Pattern) --- */
+.apple-card {
+  background: #fff;
+  border-radius: 20px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.04);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: none;
+  overflow: hidden;
+}
+
+.apple-card:hover {
+  transform: scale(1.02);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+}
+
+/* --- Page Layout --- */
+.ff-page {
+  min-height: 100vh;
+  background: #fbfbfd;
+}
+
+.ff-auth-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: calc(100vh - 60px);
+  padding: 40px 24px;
+}
+
+.ff-auth-container {
+  width: 100%;
+  max-width: 440px;
+}
+
+/* --- Foundation Card Body --- */
+.ff-card {
+  background: var(--card);
+  border-radius: 20px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.04);
+  padding: 40px 36px;
+  border: 1px solid rgba(0, 0, 0, 0.04);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.ff-card:hover {
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.08);
+}
+
+/* --- Foundation Typography --- */
+.ff-card-title {
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  color: #1d1d1f;
+  text-align: center;
+  margin-bottom: 8px;
+  line-height: 1.15;
+}
+
+.ff-card-subtitle {
   font-size: 15px;
-  line-height: 135%;
-  padding: 4px 8px;
-  background: var(--code-bg);
+  color: #86868b;
+  text-align: center;
+  margin-bottom: 32px;
+  letter-spacing: 0.01em;
+  line-height: 1.5;
+}
+
+/* --- Foundation Form Controls --- */
+.ff-form-group {
+  margin-bottom: 20px;
+}
+
+.ff-label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  color: #1d1d1f;
+  margin-bottom: 6px;
+  letter-spacing: -0.01em;
+}
+
+.ff-input {
+  width: 100%;
+  background: #f5f5f7;
+  border: 1px solid transparent;
+  border-radius: 12px;
+  padding: 14px 16px;
+  font-size: 15px;
+  font-family: var(--font-sans);
+  color: #1d1d1f;
+  outline: none;
+  transition: all 0.2s ease;
+  -webkit-appearance: none;
+}
+
+.ff-input::placeholder {
+  color: #86868b;
+  opacity: 0.7;
+}
+
+.ff-input:focus {
+  background: #fff;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 4px rgba(0, 102, 204, 0.1);
+}
+
+/* --- Foundation Buttons --- */
+.ff-btn {
+  width: 100%;
+  padding: 14px 24px;
+  border: none;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 600;
+  font-family: var(--font-sans);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  letter-spacing: -0.01em;
+}
+
+.ff-btn:active {
+  transform: scale(0.98);
+}
+
+.ff-btn-primary {
+  background: var(--primary);
+  color: var(--primary-foreground);
+  box-shadow: 0 2px 8px rgba(0, 102, 204, 0.3);
+}
+
+.ff-btn-primary:hover {
+  background: #0077ed;
+  box-shadow: 0 4px 16px rgba(0, 102, 204, 0.4);
+  transform: translateY(-1px);
+}
+
+.ff-btn-success {
+  background: #34c759;
+  color: #fff;
+  box-shadow: 0 2px 8px rgba(52, 199, 89, 0.3);
+}
+
+.ff-btn-success:hover {
+  background: #2db84e;
+  box-shadow: 0 4px 16px rgba(52, 199, 89, 0.4);
+  transform: translateY(-1px);
+}
+
+/* --- Foundation Segmented Control / Toggle --- */
+.ff-segmented-control {
+  display: inline-flex;
+  background: #e8e8ed;
+  border-radius: 12px;
+  padding: 3px;
+  gap: 2px;
+}
+
+.ff-segment {
+  padding: 10px 28px;
+  border: none;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 500;
+  font-family: var(--font-sans);
+  cursor: pointer;
+  transition: all 0.25s ease;
+  background: transparent;
+  color: #86868b;
+  letter-spacing: -0.01em;
+}
+
+.ff-segment:hover {
+  color: #1d1d1f;
+}
+
+.ff-segment.active {
+  background: #fff;
+  color: #1d1d1f;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.04);
+  font-weight: 600;
+}
+
+/* --- Foundation Footer Link --- */
+.ff-footer-text {
+  text-align: center;
+  margin-top: 24px;
+  font-size: 14px;
+  color: #86868b;
+}
+
+.ff-footer-text a {
+  color: var(--primary);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.ff-footer-text a:hover {
+  color: #0077ed;
+  text-decoration: underline;
+}
+
+/* --- Foundation Divider --- */
+.ff-divider {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin: 24px 0;
+}
+
+.ff-divider::before,
+.ff-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: #e2e2e2;
+}
+
+.ff-divider span {
+  font-size: 12px;
+  color: #86868b;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+/* --- Foundation Social Buttons --- */
+.ff-social-btn {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #e2e2e2;
+  border-radius: 12px;
+  background: #fff;
+  font-size: 14px;
+  font-weight: 500;
+  font-family: var(--font-sans);
+  color: #1d1d1f;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.ff-social-btn:hover {
+  background: #f5f5f7;
+  border-color: #d2d2d7;
+}
+
+.ff-social-row {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 4px;
+}
+
+.ff-social-row .ff-social-btn {
+  flex: 1;
+}
+
+/* --- Checkbox --- */
+.ff-checkbox-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 24px;
+}
+
+.ff-checkbox {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--primary);
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.ff-checkbox-label {
+  font-size: 13px;
+  color: #86868b;
+}
+
+.ff-checkbox-label a {
+  color: var(--primary);
+  text-decoration: none;
+}
+
+/* --- Forgot Password --- */
+.ff-forgot {
+  text-align: right;
+  margin-top: -12px;
+  margin-bottom: 24px;
+}
+
+.ff-forgot a {
+  font-size: 13px;
+  color: var(--primary);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.ff-forgot a:hover {
+  text-decoration: underline;
+}
+
+/* --- Animations --- */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.ff-animate-in {
+  animation: fadeInUp 0.5s cubic-bezier(0, 0, 0.2, 1) forwards;
+}
+
+/* --- Responsive --- */
+@media (max-width: 640px) {
+  .ff-card {
+    padding: 28px 20px;
+    border-radius: 16px;
+  }
+
+  .ff-card-title {
+    font-size: 24px;
+  }
+
+  .ff-nav-links {
+    display: none;
+  }
+
+  .ff-auth-section {
+    padding: 24px 16px;
+  }
+
+  .ff-segmented-control {
+    width: 100%;
+  }
+
+  .ff-segment {
+    flex: 1;
+    text-align: center;
+  }
 }
