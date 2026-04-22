@@ -516,3 +516,398 @@ html, body {
     text-align: center;
   }
 }
+
+/* ============================================================
+   DASHBOARD STYLES
+   ============================================================ */
+
+.ff-dashboard {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 32px 24px;
+}
+
+/* --- Dashboard Header --- */
+.ff-dash-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 32px;
+}
+
+.ff-dash-title {
+  font-size: 28px;
+  font-weight: 700;
+  color: #1d1d1f;
+  letter-spacing: -0.025em;
+}
+
+.ff-dash-subtitle {
+  font-size: 15px;
+  color: #86868b;
+  margin-top: 4px;
+}
+
+.ff-dash-user {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.ff-dash-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #34c759, #06c);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 16px;
+}
+
+.ff-dash-username {
+  font-size: 14px;
+  font-weight: 600;
+  color: #1d1d1f;
+}
+
+.ff-dash-logout {
+  background: none;
+  border: none;
+  font-size: 12px;
+  color: #ff3b30;
+  cursor: pointer;
+  padding: 0;
+  font-weight: 500;
+}
+
+.ff-dash-logout:hover {
+  text-decoration: underline;
+}
+
+/* --- Stats Row --- */
+.ff-stats-row {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 28px;
+}
+
+.ff-stat-card {
+  flex: 1;
+  padding: 20px 24px;
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.ff-stat-green {
+  background: #e8f5e9;
+}
+
+.ff-stat-orange {
+  background: #fff3e0;
+}
+
+.ff-stat-blue {
+  background: #e3f2fd;
+}
+
+.ff-stat-number {
+  font-size: 32px;
+  font-weight: 700;
+  color: #1d1d1f;
+  line-height: 1;
+}
+
+.ff-stat-label {
+  font-size: 13px;
+  font-weight: 500;
+  color: #86868b;
+}
+
+/* --- Filter Bar --- */
+.ff-filter-bar {
+  margin-bottom: 24px;
+}
+
+/* --- Food Grid --- */
+.ff-food-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 20px;
+}
+
+/* --- Food Card --- */
+.ff-food-card {
+  background: #fff;
+  border-radius: 20px;
+  padding: 24px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.04);
+  border: 1px solid rgba(0, 0, 0, 0.04);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.ff-food-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+}
+
+.ff-food-card-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.ff-food-icon {
+  font-size: 32px;
+  line-height: 1;
+}
+
+.ff-food-meta {
+  flex: 1;
+}
+
+.ff-food-title {
+  font-size: 17px;
+  font-weight: 600;
+  color: #1d1d1f;
+  letter-spacing: -0.01em;
+}
+
+.ff-food-donor {
+  font-size: 13px;
+  color: #86868b;
+  margin-top: 2px;
+}
+
+.ff-food-status {
+  font-size: 11px;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 980px;
+  white-space: nowrap;
+  letter-spacing: 0.02em;
+}
+
+.ff-food-details {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.ff-food-detail {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  color: #424245;
+  background: #f5f5f7;
+  padding: 6px 12px;
+  border-radius: 8px;
+}
+
+.ff-food-detail svg {
+  flex-shrink: 0;
+}
+
+.ff-food-actions .ff-btn {
+  margin-top: 4px;
+}
+
+/* --- Proof Preview --- */
+.ff-proof-preview {
+  text-align: center;
+}
+
+.ff-proof-img {
+  width: 100%;
+  max-height: 200px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 8px;
+}
+
+.ff-proof-label {
+  font-size: 13px;
+  color: #34c759;
+  font-weight: 600;
+}
+
+/* --- Empty State --- */
+.ff-empty-state {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 60px 24px;
+  color: #86868b;
+  font-size: 15px;
+}
+
+/* ============================================================
+   MODAL STYLES
+   ============================================================ */
+
+.ff-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+  padding: 24px;
+}
+
+.ff-modal {
+  background: #fff;
+  border-radius: 20px;
+  padding: 32px;
+  width: 100%;
+  max-width: 480px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+  animation: fadeInUp 0.3s ease;
+}
+
+.ff-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.ff-modal-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: #1d1d1f;
+}
+
+.ff-modal-close {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 6px;
+  display: flex;
+  transition: background 0.15s;
+}
+
+.ff-modal-close:hover {
+  background: #f5f5f7;
+}
+
+.ff-modal-subtitle {
+  font-size: 14px;
+  color: #86868b;
+  margin-bottom: 24px;
+  line-height: 1.5;
+}
+
+/* --- Upload Zone --- */
+.ff-upload-zone {
+  border: 2px dashed #d2d2d7;
+  border-radius: 16px;
+  padding: 40px 24px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-bottom: 24px;
+}
+
+.ff-upload-zone:hover {
+  border-color: var(--primary);
+  background: rgba(0, 102, 204, 0.02);
+}
+
+.ff-upload-text {
+  font-size: 15px;
+  font-weight: 600;
+  color: #1d1d1f;
+  margin-top: 12px;
+}
+
+.ff-upload-hint {
+  font-size: 12px;
+  color: #86868b;
+  margin-top: 4px;
+}
+
+/* --- Preview --- */
+.ff-preview-container {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.ff-preview-img {
+  width: 100%;
+  max-height: 280px;
+  object-fit: cover;
+  border-radius: 16px;
+  margin-bottom: 12px;
+}
+
+.ff-change-photo {
+  background: none;
+  border: none;
+  font-size: 13px;
+  color: var(--primary);
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.ff-change-photo:hover {
+  text-decoration: underline;
+}
+
+/* --- Modal Actions --- */
+.ff-modal-actions {
+  display: flex;
+  gap: 12px;
+}
+
+.ff-modal-actions .ff-btn {
+  flex: 1;
+}
+
+.ff-btn-outline {
+  background: #fff;
+  color: #1d1d1f;
+  border: 1px solid #d2d2d7;
+}
+
+.ff-btn-outline:hover {
+  background: #f5f5f7;
+}
+
+/* ============================================================
+   DASHBOARD RESPONSIVE
+   ============================================================ */
+
+@media (max-width: 768px) {
+  .ff-dash-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .ff-stats-row {
+    flex-direction: column;
+  }
+
+  .ff-food-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .ff-dash-title {
+    font-size: 22px;
+  }
+
+  .ff-modal {
+    padding: 24px;
+    margin: 16px;
+  }
+}

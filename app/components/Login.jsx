@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-function Login() {
+function Login({ onLogin }) {
   const [showPassword, setShowPassword] = useState(false);
 
   return (
@@ -52,7 +52,7 @@ function Login() {
             <div className="ff-forgot">
               <a href="#">Forgot password?</a>
             </div>
-            <button className="ff-btn ff-btn-primary" type="button">
+            <button className="ff-btn ff-btn-primary" type="button" onClick={onLogin}>
               Sign In
             </button>
           </form>

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-function Signup() {
+function Signup({ onLogin }) {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirm, setShowConfirm] = useState(false);
 
@@ -83,7 +83,7 @@ function Signup() {
                 I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>
               </label>
             </div>
-            <button className="ff-btn ff-btn-success" type="button">
+            <button className="ff-btn ff-btn-success" type="button" onClick={onLogin}>
               Create Account
             </button>
           </form>
