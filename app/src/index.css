@@ -236,6 +236,40 @@ html, body {
   box-shadow: 0 0 0 4px rgba(0, 102, 204, 0.1);
 }
 
+/* --- Password Toggle (inside input) --- */
+.ff-input-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.ff-input-wrapper .ff-input {
+  padding-right: 48px;
+}
+
+.ff-toggle-password {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  transition: background 0.15s ease;
+}
+
+.ff-toggle-password:hover {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+.ff-toggle-password svg {
+  display: block;
+}
+
 /* --- Foundation Buttons --- */
 .ff-btn {
   width: 100%;

@@ -7,18 +7,18 @@ function App() {
   const [view, setView] = useState("login");
 
   return (
-    <>
+    <div className="ff-page">
       <Navbar />
-      <div className="container text-center mt-5 mb-2">
-        <div className="container-view-toggle">
-          <button 
-            className={`btn ${view === 'login' ? 'btn-primary text-white' : 'btn-light'} me-1`} 
+      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', paddingTop: '32px' }}>
+        <div className="ff-segmented-control">
+          <button
+            className={`ff-segment ${view === 'login' ? 'active' : ''}`}
             onClick={() => setView("login")}
           >
             Login
           </button>
-          <button 
-            className={`btn ${view === 'signup' ? 'btn-success text-white' : 'btn-light'}`} 
+          <button
+            className={`ff-segment ${view === 'signup' ? 'active' : ''}`}
             onClick={() => setView("signup")}
           >
             Sign Up
@@ -26,7 +26,7 @@ function App() {
         </div>
       </div>
       {view === "login" ? <Login /> : <Signup />}
-    </>
+    </div>
   );
 }
 export default App;
