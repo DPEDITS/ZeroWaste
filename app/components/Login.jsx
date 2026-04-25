@@ -2,6 +2,11 @@ import React, { useState } from 'react';
 
 function Login({ onLogin }) {
   const [showPassword, setShowPassword] = useState(false);
+  const [role, setRole] = useState('volunteer');
+
+  const handleSubmit = () => {
+    onLogin({ role });
+  };
 
   return (
     <div className="ff-auth-section">
@@ -9,6 +14,26 @@ function Login({ onLogin }) {
         <div className="ff-card">
           <h2 className="ff-card-title">Welcome back</h2>
           <p className="ff-card-subtitle">Sign in to your ZeroWaste account</p>
+
+          {/* Role Selector */}
+          <div className="ff-role-selector">
+            <button
+              className={`ff-role-btn ${role === 'donor' ? 'active donor' : ''}`}
+              onClick={() => setRole('donor')}
+              type="button"
+            >
+              <span className="ff-role-icon">🍽️</span>
+              <span className="ff-role-text">Donor</span>
+            </button>
+            <button
+              className={`ff-role-btn ${role === 'volunteer' ? 'active volunteer' : ''}`}
+              onClick={() => setRole('volunteer')}
+              type="button"
+            >
+              <span className="ff-role-icon">🤝</span>
+              <span className="ff-role-text">Volunteer</span>
+            </button>
+          </div>
 
           <div className="ff-social-row">
             <button className="ff-social-btn" type="button">
@@ -21,7 +46,7 @@ function Login({ onLogin }) {
             <span>or</span>
           </div>
 
-          <form>
+          <form onSubmit={(e) => e.preventDefault()}>
             <div className="ff-form-group">
               <label htmlFor="email" className="ff-label">Email address</label>
               <input type="email" className="ff-input" id="email" placeholder="you@example.com" />
@@ -32,14 +57,13 @@ function Login({ onLogin }) {
                 <input
                   type={showPassword ? "text" : "password"}
                   id="password"
-                  className="ff-input ff-input-password"
+                  className="ff-input"
                   placeholder="••••••••"
                 />
                 <button
                   type="button"
                   className="ff-toggle-password"
                   onClick={() => setShowPassword(!showPassword)}
-                  aria-label={showPassword ? "Hide password" : "Show password"}
                 >
                   {showPassword ? (
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#86868b" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94"/><path d="M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19"/><line x1="1" y1="1" x2="23" y2="23"/><path d="M14.12 14.12a3 3 0 1 1-4.24-4.24"/></svg>
@@ -52,8 +76,8 @@ function Login({ onLogin }) {
             <div className="ff-forgot">
               <a href="#">Forgot password?</a>
             </div>
-            <button className="ff-btn ff-btn-primary" type="button" onClick={onLogin}>
-              Sign In
+            <button className="ff-btn ff-btn-primary" type="button" onClick={handleSubmit}>
+              Sign In as {role === 'donor' ? 'Donor' : 'Volunteer'}
             </button>
           </form>
 

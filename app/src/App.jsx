@@ -3,14 +3,16 @@ import Navbar from "../components/Navbar.jsx";
 import Login from "../components/Login.jsx";
 import Signup from "../components/Signup.jsx";
 import Dashboard from "../components/Dashboard.jsx";
+import DonorDashboard from "../components/DonorDashboard.jsx";
 
 function App() {
   const [view, setView] = useState("login");
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [user, setUser] = useState(null);
 
-  const handleLogin = () => {
-    setUser({ name: "Fularani Foundation", role: "ngo" });
+  const handleLogin = ({ role }) => {
+    const name = role === 'donor' ? 'Hotel Mayfair' : 'Fularani Foundation';
+    setUser({ name, role });
     setIsLoggedIn(true);
   };
 
@@ -20,11 +22,15 @@ function App() {
     setView("login");
   };
 
-  if (isLoggedIn) {
+  if (isLoggedIn && user) {
     return (
       <div className="ff-page">
         <Navbar />
-        <Dashboard user={user} onLogout={handleLogout} />
+        {user.role === 'donor' ? (
+          <DonorDashboard user={user} onLogout={handleLogout} />
+        ) : (
+          <Dashboard user={user} onLogout={handleLogout} />
+        )}
       </div>
     );
   }

@@ -350,6 +350,69 @@ html, body {
   font-weight: 600;
 }
 
+/* --- Role Selector --- */
+.ff-role-selector {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.ff-role-btn {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 16px 12px;
+  border: 2px solid #e2e2e2;
+  border-radius: 16px;
+  background: #fff;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: var(--font-sans);
+}
+
+.ff-role-btn:hover {
+  border-color: #86868b;
+}
+
+.ff-role-btn.active.donor {
+  border-color: #ff9500;
+  background: #fff8ec;
+}
+
+.ff-role-btn.active.volunteer {
+  border-color: #34c759;
+  background: #edfcf2;
+}
+
+.ff-role-icon {
+  font-size: 28px;
+}
+
+.ff-role-text {
+  font-size: 13px;
+  font-weight: 600;
+  color: #1d1d1f;
+}
+
+/* --- Claimed Info Badge --- */
+.ff-claimed-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  background: #edfcf2;
+  border-radius: 10px;
+  font-size: 13px;
+  color: #424245;
+  margin-bottom: 12px;
+}
+
+.ff-claimed-info strong {
+  color: #1d1d1f;
+}
+
 /* --- Foundation Footer Link --- */
 .ff-footer-text {
   text-align: center;
