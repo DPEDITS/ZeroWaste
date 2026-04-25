@@ -1,0 +1,85 @@
+/* PAGE */
+.signup-page {
+  display: flex;
+  height: 100vh;
+  background: #0b0f1a;
+  
+
+}
+
+/* LEFT */
+.signup-left {
+  flex: 1;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 60px;
+}
+
+.signup-left h1 {
+  font-size: 50px;
+  background: linear-gradient(90deg,#7b61ff,#ff4fd8);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.signup-left p {
+  margin-top: 15px;
+  color: #ccc;
+}
+
+/* RIGHT */
+.signup-right {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* CARD */
+.signup-card {
+  background: rgba(255,255,255,0.05);
+  padding: 30px;
+  border-radius: 15px;
+  backdrop-filter: blur(10px);
+  width: 320px;
+  color: white;
+}
+
+/* INPUT */
+.input {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 8px;
+  border: none;
+}
+
+/* PASSWORD */
+.password-box {
+  display: flex;
+  align-items: center;
+}
+
+.password-box span {
+  margin-left: -30px;
+  cursor: pointer;
+}
+
+/* BUTTON */
+.signup-btn {
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  background: linear-gradient(90deg,#7b61ff,#ff4fd8);
+  border: none;
+  color: white;
+  border-radius: 20px;
+}
+
+/* SWITCH */
+.switch {
+  margin-top: 10px;
+  text-align: center;
+}

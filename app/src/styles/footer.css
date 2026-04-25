@@ -1,0 +1,36 @@
+.footer {
+  background: #0b0f1a;
+  color: white;
+  padding: 40px 20px;
+}
+
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.footer-col h4 {
+  margin-bottom: 10px;
+}
+
+.footer input {
+  padding: 8px;
+  border-radius: 5px;
+  border: none;
+}
+
+.footer button {
+  margin-top: 5px;
+  padding: 8px 12px;
+  background: linear-gradient(90deg, #7b61ff, #ff4fd8);
+  border: none;
+  color: white;
+}
+
+.footer-bottom {
+  text-align: center;
+  margin-top: 20px;
+  color: #aaa;
+}
