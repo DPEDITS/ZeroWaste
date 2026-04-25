@@ -1,0 +1,155 @@
+/* PAGE */
+.login-page {
+  display: flex;
+  min-height: 100vh;
+  background: radial-gradient(circle at top, #0b0f1a, #05070d);
+}
+
+/* LEFT */
+.login-left {
+  flex: 1;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 80px;
+}
+
+.login-left h1 {
+  font-size: 52px;
+  font-weight: 700;
+  background: linear-gradient(90deg,#7b61ff,#ff4fd8);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.login-left p {
+  margin-top: 15px;
+  color: #bbb;
+  max-width: 500px;
+  line-height: 1.6;
+  font-size: 15px;
+}
+
+/* RIGHT */
+.login-right {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* CARD (GLASS EFFECT) */
+.login-card {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 18px;
+
+  padding: 35px;
+  width: 340px;
+  color: white;
+
+  box-shadow: 0 8px 30px rgba(0,0,0,0.4);
+}
+
+.input {
+  width: 100%;
+  padding: 11px;
+  margin: 10px 0;
+
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 10px;
+
+  color: white;
+  font-size: 14px;
+
+  appearance: none; /* 🔥 removes default style */
+}
+select option {
+  background: #0b0f1a;
+  color: white;
+}
+.input::placeholder {
+  color: #aaa;
+}
+
+/* PASSWORD */
+.password-box {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.password-box span {
+  position: absolute;
+  right: 10px;
+  cursor: pointer;
+  color: #aaa;
+}
+
+/* BUTTON */
+.login-btn {
+  width: 100%;
+  padding: 11px;
+  margin-top: 12px;
+
+  background: linear-gradient(90deg,#7b61ff,#ff4fd8);
+  border: none;
+  color: white;
+  border-radius: 25px;
+
+  font-weight: 500;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.login-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 0 15px rgba(255, 79, 216, 0.6);
+}
+
+/* ERROR */
+.error {
+  background: rgba(255, 77, 77, 0.2);
+  border: 1px solid rgba(255, 77, 77, 0.4);
+  padding: 8px;
+  border-radius: 6px;
+  margin-bottom: 10px;
+  font-size: 13px;
+}
+
+/* SWITCH */
+.switch {
+  margin-top: 12px;
+  text-align: center;
+  font-size: 14px;
+}
+
+.switch a {
+  color: #ff4fd8;
+  text-decoration: none;
+}
+
+.switch a:hover {
+  text-decoration: underline;
+}
+
+/* 🔥 RESPONSIVE */
+@media (max-width: 768px) {
+  .login-page {
+    flex-direction: column;
+  }
+
+  .login-left {
+    padding: 40px 20px;
+    text-align: center;
+  }
+
+  .login-right {
+    padding: 20px;
+  }
+}
