@@ -1,6 +1,7 @@
 import express from "express";
 import {
   signupUser,
+  loginUser,
   getAllUsers,
   approveUser,
   rejectUser,
@@ -11,6 +12,7 @@ const router = express.Router();
 
 // Signup
 router.post("/signup", signupUser);
+router.post("/login", loginUser);
 
 // Admin APIs
 router.get("/all", getAllUsers);

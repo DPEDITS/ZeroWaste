@@ -52,7 +52,14 @@ function Login({ onLogin }) {
       }
 
       localStorage.setItem("user", JSON.stringify(user));
-      onLogin(user);
+      localStorage.setItem("role", user.role);
+      localStorage.setItem("userId", user._id);
+
+      if (user.role === "volunteer") {
+        navigate("/volunteer/dashboard");
+      } else {
+        navigate("/");
+      }
 
     } catch (err) {
       setError("Invalid email or password",err);
