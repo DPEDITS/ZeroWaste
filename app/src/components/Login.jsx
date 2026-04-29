@@ -57,6 +57,8 @@ function Login({ onLogin }) {
 
       if (user.role === "volunteer") {
         navigate("/volunteer/dashboard");
+      } else if (user.role === "donor") {
+        navigate("/donor/dashboard");
       } else {
         navigate("/");
       }
