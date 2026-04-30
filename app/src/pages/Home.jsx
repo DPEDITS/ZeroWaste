@@ -1,17 +1,14 @@
 import React, { useEffect, useState, useRef } from "react";
-import "../styles/home.css";
+import "../styles/home.scss";
 import api from "../api/axios";
-
 import heroImg from "../assets/hero_food_donation.png";
 import donateImg from "../assets/donate_food.png";
 import deliveryImg from "../assets/delivery_volunteer.png";
 import impactImg from "../assets/community_impact.png";
-
 const Counter = ({ target, label, icon, suffix = "+" }) => {
   const [count, setCount] = useState(0);
   const ref = useRef(null);
   const started = useRef(false);
-
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -225,8 +222,6 @@ const Home = () => {
 
         </div>
       </section>
-
-      {/* ═══════════ HOW IT WORKS ═══════════ */}
       <section id="features" className="ngo-section how-section">
         <div className="how-header">
           <div className="section-eyebrow">
@@ -273,7 +268,6 @@ const Home = () => {
         </div>
       </section>
 
-      {/* ═══════════ FAQ ═══════════ */}
       <section id="faq" className="ngo-section faq-section">
         <div className="faq-layout">
 

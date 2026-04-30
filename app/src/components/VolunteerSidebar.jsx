@@ -24,14 +24,12 @@ const VolunteerSidebar = () => {
           <div className="sidebar-logo-icon">♻️</div>
           <span className="sidebar-logo-text">ZeroWaste</span>
         </Link>
-
         <div className="sidebar-user">
           <div className="sidebar-avatar">
-            {user?.name?.[0]?.toUpperCase() || "V"}
+            {user?.name?.[0]?.toUpperCase()}
           </div>
           <div className="sidebar-user-info">
-            <div className="sidebar-user-name">{user?.name || "Volunteer"}</div>
-            <div className="sidebar-user-role">Delivery Hero</div>
+            <div className="sidebar-user-name">{user?.name}</div>
           </div>
         </div>
       </div>

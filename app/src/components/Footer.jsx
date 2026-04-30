@@ -1,13 +1,9 @@
 import React from "react";
 import "../styles/footer.css";
-
 const Footer = () => {
   return (
     <footer className="footer">
-
       <div className="footer-main">
-
-        {/* Brand */}
         <div className="footer-brand">
           <div className="footer-logo">
             ♻️ <span className="footer-logo-text">ZeroWaste</span>
@@ -31,8 +27,6 @@ const Footer = () => {
             </a>
           </div>
         </div>
-
-        {/* Quick Links */}
         <div className="footer-col">
           <h4>Quick Links</h4>
           <ul>
@@ -42,8 +36,6 @@ const Footer = () => {
             <li><a href="/signup">Get Started</a></li>
           </ul>
         </div>
-
-        {/* Legal */}
         <div className="footer-col">
           <h4>Legal</h4>
           <ul>
@@ -53,8 +45,6 @@ const Footer = () => {
             <li><span>Contact Us</span></li>
           </ul>
         </div>
-
-        {/* Subscribe */}
         <div className="footer-col footer-subscribe">
           <h4>Stay Updated</h4>
           <p>Subscribe to our newsletter for latest updates on our mission.</p>

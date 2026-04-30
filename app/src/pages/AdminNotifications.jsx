@@ -18,11 +18,9 @@ const AdminNotifications = () => {
       }
     };
     fetchNotifications();
-    // Refresh every 30 seconds
     const interval = setInterval(fetchNotifications, 30000);
     return () => clearInterval(interval);
   }, []);
-
   return (
     <AdminLayout>
       <div className="admin-page-content" style={{ padding: '2rem' }}>

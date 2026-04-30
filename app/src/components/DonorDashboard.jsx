@@ -4,7 +4,7 @@ const MOCK_DONATIONS = [
   {
     id: 1,
     foodType: "Cooked Rice & Dal",
-    quantity: "~50 servings",
+    quantity: "50 servings",
     location: "Bhubaneswar, Saheed Nagar",
     expiresIn: "4 hours",
     status: "available",
@@ -15,7 +15,7 @@ const MOCK_DONATIONS = [
   {
     id: 2,
     foodType: "Fresh Bread & Pastries",
-    quantity: "~30 packs",
+    quantity: "30 packs",
     location: "Cuttack, College Square",
     expiresIn: "6 hours",
     status: "claimed",

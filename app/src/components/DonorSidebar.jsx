@@ -17,29 +17,23 @@ const DonorSidebar = () => {
 
   return (
     <aside className="donor-sidebar">
-
-      {/* Header */}
       <div className="sidebar-header">
-        <Link to="/" className="sidebar-logo">
+        <Link to="/donor/dashboard" className="sidebar-logo">
           <div className="sidebar-logo-icon">♻️</div>
           <span className="sidebar-logo-text">ZeroWaste</span>
         </Link>
 
         <div className="sidebar-user">
           <div className="sidebar-avatar">
-            {user?.name?.[0]?.toUpperCase() || "D"}
+            {user?.name?.[0]?.toUpperCase()}
           </div>
           <div className="sidebar-user-info">
-            <div className="sidebar-user-name">{user?.name || "Donor"}</div>
-            <div className="sidebar-user-role">Food Donor</div>
+            <div className="sidebar-user-name">{user?.name}</div>
           </div>
         </div>
       </div>
-
-      {/* Navigation */}
       <nav className="sidebar-nav">
         <div className="sidebar-nav-label">Main Menu</div>
-
         <Link
           to="/donor/dashboard"
           className={`sidebar-link ${isActive("/donor/dashboard") ? "active" : ""}`}
@@ -74,16 +68,12 @@ const DonorSidebar = () => {
           Donate Food
         </Link>
       </nav>
-
-      {/* Footer */}
       <div className="sidebar-footer">
         <button className="sidebar-logout" onClick={logout}>
           🚪 Sign Out
         </button>
       </div>
-
     </aside>
   );
 };
-
 export default DonorSidebar;

@@ -12,10 +12,8 @@ const VolunteerDashboard = () => {
         const user = JSON.parse(localStorage.getItem("user"));
         const res = await axios.get("http://localhost:5000/api/donations/all");
         const donations = res.data || [];
-
         const pending = donations.filter(d => d.status === "pending").length;
         const delivered = donations.filter(d => d.volunteer && d.volunteer._id === user._id && d.status === "delivered").length;
-
         setStats({ pending, delivered });
       } catch (err) {
         console.error("Error fetching stats", err);

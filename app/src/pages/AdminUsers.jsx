@@ -93,7 +93,6 @@ const AdminUsers = () => {
               </div>
             </div>
 
-            {/* ACTIONS */}
             <div className="mt-auto d-flex gap-2 flex-wrap">
               {user.status !== "approved" && (
                 <button

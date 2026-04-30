@@ -6,10 +6,9 @@ const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const navigate = useNavigate();
 
-  // Detect scroll
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
+      setScrolled(window.scrollY >1);
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -20,19 +19,17 @@ const Navbar = () => {
 
   const handleLogout = () => {
     localStorage.removeItem("user");
-    navigate("/login");
+    navigate("/");
   };
 
   return (
     <nav className={`custom-navbar ${scrolled ? "scrolled" : ""}`}>
       <div className="nav-container">
 
-        {/* Logo */}
         <Link to="/" className="logo">
           ♻️ <span className="logo-text">ZeroWaste</span>
         </Link>
 
-        {/* Links */}
         <div className="nav-links">
           <a href="#about">About</a>
 <a href="#features">Features</a>

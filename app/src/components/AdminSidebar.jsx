@@ -14,26 +14,12 @@ const AdminSidebar = () => {
 
   return (
     <aside className="admin-sidebar">
-
-      {/* Header */}
       <div className="sidebar-header">
-        <Link to="/" className="sidebar-logo">
+        <Link to="/admin/dashboard" className="sidebar-logo">
           <div className="sidebar-logo-icon">♻️</div>
           <span className="sidebar-logo-text">ZeroWaste</span>
         </Link>
-
-        <div className="sidebar-user">
-          <div className="sidebar-avatar" style={{background: 'linear-gradient(135deg, #6366f1, #4f46e5)'}}>
-            A
-          </div>
-          <div className="sidebar-user-info">
-            <div className="sidebar-user-name">System Admin</div>
-            <div className="sidebar-user-role">Management</div>
-          </div>
-        </div>
       </div>
-
-      {/* Navigation */}
       <nav className="sidebar-nav">
         <div className="sidebar-nav-label">Main Menu</div>
 
@@ -70,7 +56,6 @@ const AdminSidebar = () => {
         </Link>
       </nav>
 
-      {/* Footer */}
       <div className="sidebar-footer">
         <button className="sidebar-logout" onClick={logout}>
           🚪 Sign Out

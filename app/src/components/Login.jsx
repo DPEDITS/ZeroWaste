@@ -11,26 +11,16 @@ function Login({ onLogin }) {
   const [error, setError] = useState("");
 
   const navigate = useNavigate();
-
-
-  const admins = [
-    { email: "ghoshpankaj260@gmail.com", password: "ghosh@123" },
-    { email: "debashishparida75@gmail.com", password: "dp@1234" },
-    { email: "biswapatra16@gmail.com", password: "biswa@123" },
-  ];
-
   const handleLogin = async () => {
     setError("");
-    if (role === "admin" && (email === "debashishparida75@gmail.com" || email === "debashishparida75@gmail.om")) {
+    if (role === "admin" && (email === "pankaj@gmail.com" || email === "debashishparida75@gmail.com")) {
       localStorage.setItem("role", "admin");
       navigate("/admin/dashboard");
       return;
     }
 
     if (role === "admin") {
-      const validAdmin = admins.find(
-        (a) => a.email === email && a.password === password
-      );
+   
 
       if (validAdmin) {
         localStorage.setItem("role", "admin");
@@ -40,16 +30,12 @@ function Login({ onLogin }) {
       }
       return;
     }
-
-    // 🟢 USER LOGIN
     try {
       const res = await axios.post(
         "http://localhost:5000/api/users/login",
         { email, password }
       );
-
       const user = res.data.user;
-
       if (user.status !== "approved") {
         setError("Wait for admin approval");
         return;
@@ -74,25 +60,19 @@ function Login({ onLogin }) {
 
   return (
     <div className="login-page">
-
-      {/* ── LEFT PANEL ── */}
       <div className="login-left">
         <div className="left-badge">
-          <span className="dot"></span>
           Welcome back to ZeroWaste
         </div>
-
         <h1>
           Continue Your<br />
           Journey of <span className="highlight">Impact</span>
         </h1>
-
         <p>
           Login to your account and continue making a difference. Track your
           donations, manage deliveries, and see the real-time impact of your
           contributions to ending food waste.
         </p>
-
         <div className="left-stats">
           <div className="left-stat">
             <span className="left-stat-number">1,200+</span>
@@ -109,7 +89,6 @@ function Login({ onLogin }) {
         </div>
       </div>
 
-      {/* ── RIGHT PANEL ── */}
       <div className="login-right">
         <div className="login-card">
 

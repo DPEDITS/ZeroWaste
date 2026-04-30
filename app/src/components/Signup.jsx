@@ -39,7 +39,6 @@ function Signup() {
   return (
     <div className="signup-page">
 
-      {/* ── LEFT PANEL ── */}
       <div className="signup-left">
         <div className="left-badge">
           <span className="dot"></span>
@@ -77,7 +76,6 @@ function Signup() {
         </div>
       </div>
 
-      {/* ── RIGHT PANEL ── */}
       <div className="signup-right">
         <div className="signup-card">
 
@@ -89,7 +87,6 @@ function Signup() {
 
           <form onSubmit={handleSignup}>
 
-            {/* ROLE SELECTOR */}
             <div className="role-selector">
               <button
                 className={`role-option ${role === "donor" ? "active" : ""}`}
