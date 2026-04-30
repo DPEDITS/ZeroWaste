@@ -1,28 +1,75 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
+import "../styles/admin.css";
 
 const AdminSidebar = () => {
   const navigate = useNavigate();
+  const location = useLocation();
 
   const logout = () => {
     localStorage.removeItem("role");
-    navigate("/admin/login");
+    navigate("/login");
   };
 
+  const isActive = (path) => location.pathname === path;
+
   return (
-    <div className="bg-dark text-white p-3 vh-100" style={{ width: "250px" }}>
-      <h4>Admin Panel</h4>
+    <aside className="admin-sidebar">
 
-      <ul className="nav flex-column mt-4">
-        <li><Link to="/admin/dashboard" className="nav-link text-white">Dashboard</Link></li>
-        <li><Link to="/admin/users" className="nav-link text-white">Users</Link></li>
-        <li><Link to="/admin/donations" className="nav-link text-white">Donations</Link></li>
-        <li><Link to="/admin/requests" className="nav-link text-white">Requests</Link></li>
-      </ul>
+      {/* Header */}
+      <div className="sidebar-header">
+        <Link to="/" className="sidebar-logo">
+          <div className="sidebar-logo-icon" style={{background: 'rgba(255,255,255,0.1)'}}>🛡️</div>
+          <span className="sidebar-logo-text">ZeroWaste</span>
+        </Link>
 
-      <button className="btn btn-danger w-100 mt-5" onClick={logout}>
-        Logout
-      </button>
-    </div>
+        <div className="sidebar-user">
+          <div className="sidebar-avatar" style={{background: 'linear-gradient(135deg, #6366f1, #4f46e5)'}}>
+            A
+          </div>
+          <div className="sidebar-user-info">
+            <div className="sidebar-user-name">System Admin</div>
+            <div className="sidebar-user-role">Management</div>
+          </div>
+        </div>
+      </div>
+
+      {/* Navigation */}
+      <nav className="sidebar-nav">
+        <div className="sidebar-nav-label">Main Menu</div>
+
+        <Link
+          to="/admin/dashboard"
+          className={`sidebar-link ${isActive("/admin/dashboard") ? "active" : ""}`}
+        >
+          <span className="sidebar-link-icon">📊</span>
+          Overview
+        </Link>
+
+        <Link
+          to="/admin/users"
+          className={`sidebar-link ${isActive("/admin/users") ? "active" : ""}`}
+        >
+          <span className="sidebar-link-icon">👥</span>
+          Users
+        </Link>
+
+        <Link
+          to="/admin/donations"
+          className={`sidebar-link ${isActive("/admin/donations") ? "active" : ""}`}
+        >
+          <span className="sidebar-link-icon">🍱</span>
+          Donations
+        </Link>
+      </nav>
+
+      {/* Footer */}
+      <div className="sidebar-footer">
+        <button className="sidebar-logout" onClick={logout}>
+          🚪 Sign Out
+        </button>
+      </div>
+
+    </aside>
   );
 };
 

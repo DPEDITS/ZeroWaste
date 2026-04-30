@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import AdminLayout from "../components/AdminLayout";
 
-const AdminDashboard = () => {
-  const navigate = useNavigate();
+const AdminUsers = () => {
   const [users, setUsers] = useState([]);
   const [search, setSearch] = useState("");
   const [roleFilter, setRoleFilter] = useState("all");
@@ -16,11 +15,6 @@ const AdminDashboard = () => {
   useEffect(() => {
     fetchUsers();
   }, []);
-
-  const handleLogout = () => {
-    localStorage.removeItem("role");
-    navigate("/admin/login");
-  };
 
   const deleteUser = async (id) => {
     await axios.delete(`http://localhost:5000/api/users/${id}`);
@@ -48,104 +42,92 @@ const AdminDashboard = () => {
   });
 
   return (
-    <div className="d-flex">
-
-      {/* Sidebar */}
-      <div className="bg-dark text-white p-3 vh-100" style={{ width: "250px" }}>
-        <h4>Admin Panel</h4>
-        <button className="btn btn-danger mt-5 w-100" onClick={handleLogout}>
-          Logout
-        </button>
+    <AdminLayout>
+      <div className="admin-action-bar">
+        <div>
+          <h1 className="admin-page-title">Users Management</h1>
+          <p className="admin-page-subtitle">Manage donor and volunteer accounts</p>
+        </div>
       </div>
 
-      {/* Main */}
-      <div className="flex-grow-1 p-4">
+      {/* Search + Filter */}
+      <div className="d-flex gap-3 mb-4">
+        <input
+          type="text"
+          className="admin-form-input"
+          style={{ maxWidth: '400px' }}
+          placeholder="Search by name or email"
+          onChange={(e) => setSearch(e.target.value)}
+        />
 
-        <h2 className="mb-3">Users Management</h2>
+        <select
+          className="admin-form-input"
+          style={{ maxWidth: "200px" }}
+          onChange={(e) => setRoleFilter(e.target.value)}
+        >
+          <option value="all">All Roles</option>
+          <option value="donor">Donor</option>
+          <option value="volunteer">Volunteer</option>
+        </select>
+      </div>
 
-        {/* Search + Filter */}
-        <div className="d-flex gap-3 mb-4">
-          <input
-            type="text"
-            className="form-control"
-            placeholder="Search by name or email"
-            onChange={(e) => setSearch(e.target.value)}
-          />
-
-          <select
-            className="form-select"
-            style={{ maxWidth: "200px" }}
-            onChange={(e) => setRoleFilter(e.target.value)}
-          >
-            <option value="all">All</option>
-            <option value="donor">Donor</option>
-            <option value="volunteer">Volunteer</option>
-          </select>
-        </div>
-
-        {/* 🔥 CARD GRID */}
-        <div className="row">
-
-          {filteredUsers.map((user, index) => (
-            <div className="col-md-4 mb-4" key={user._id}>
-              <div className="card shadow-sm h-100 p-3">
-
-                <h5>{user.name}</h5>
-                <p className="text-muted">{user.email}</p>
-
-                <div className="mb-2">
-                  <span className="badge bg-primary me-2">
-                    {user.role}
-                  </span>
-
-                  <span
-                    className={`badge ${
-                      user.status === "approved"
-                        ? "bg-success"
-                        : user.status === "rejected"
-                        ? "bg-danger"
-                        : "bg-warning text-dark"
-                    }`}
-                  >
-                    {user.status}
-                  </span>
-                </div>
-
-                {/* ACTIONS */}
-                <div className="mt-auto d-flex gap-2 flex-wrap">
-
-                  <button
-                    className="btn btn-success btn-sm"
-                    onClick={() => approveUser(user._id)}
-                  >
-                    Approve
-                  </button>
-
-                  <button
-                    className="btn btn-warning btn-sm"
-                    onClick={() => rejectUser(user._id)}
-                  >
-                    Reject
-                  </button>
-
-                  <button
-                    className="btn btn-danger btn-sm"
-                    onClick={() => deleteUser(user._id)}
-                  >
-                    Delete
-                  </button>
-
-                </div>
-
+      {/* CARD GRID */}
+      <div className="donations-grid">
+        {filteredUsers.map((user, index) => (
+          <div className="donation-card" key={user._id}>
+            <div className="donation-card-header mb-2">
+              <div>
+                <h5 className="food-title">{user.name}</h5>
+                <p className="food-date m-0">{user.email}</p>
               </div>
             </div>
-          ))}
 
-        </div>
+            <div className="donation-details">
+              <div className="detail-pill" style={{textTransform: 'capitalize', background: user.role === 'donor' ? '#e8f5e9' : '#e0f2fe', color: user.role === 'donor' ? '#166534' : '#075985'}}>
+                <span className="detail-pill-icon">{user.role === 'donor' ? '🍽️' : '🚚'}</span>
+                {user.role}
+              </div>
+              <div className="detail-pill" style={{textTransform: 'capitalize', background: user.status === 'approved' ? '#f0fdf4' : user.status === 'pending' ? '#fffbeb' : '#fef2f2', color: user.status === 'approved' ? '#166534' : user.status === 'pending' ? '#b45309' : '#991b1b'}}>
+                <span className="detail-pill-icon">{user.status === 'approved' ? '✅' : user.status === 'pending' ? '⏳' : '❌'}</span>
+                {user.status}
+              </div>
+            </div>
 
+            {/* ACTIONS */}
+            <div className="mt-auto d-flex gap-2 flex-wrap">
+              {user.status !== "approved" && (
+                <button
+                  className="btn-add-donation"
+                  style={{padding: '8px 16px', fontSize: '13px'}}
+                  onClick={() => approveUser(user._id)}
+                >
+                  ✅ Approve
+                </button>
+              )}
+
+              {user.status !== "rejected" && (
+                <button
+                  className="btn-cancel"
+                  style={{padding: '8px 16px', fontSize: '13px', background: '#fffbeb', borderColor: '#fde68a', color: '#b45309'}}
+                  onClick={() => rejectUser(user._id)}
+                >
+                  ⚠️ Reject
+                </button>
+              )}
+
+              <button
+                className="btn-cancel"
+                style={{padding: '8px 16px', fontSize: '13px', background: '#fef2f2', borderColor: '#fecaca', color: '#991b1b'}}
+                onClick={() => deleteUser(user._id)}
+              >
+                🗑️ Delete
+              </button>
+            </div>
+          </div>
+        ))}
       </div>
-    </div>
+    </AdminLayout>
   );
 };
 
-export default AdminDashboard;
+export default AdminUsers;
