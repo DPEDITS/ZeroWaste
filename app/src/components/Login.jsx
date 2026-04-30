@@ -12,7 +12,7 @@ function Login({ onLogin }) {
 
   const navigate = useNavigate();
 
-  // Hardcoded Admins
+
   const admins = [
     { email: "ghoshpankaj260@gmail.com", password: "ghosh@123" },
     { email: "debashishparida75@gmail.com", password: "dp@1234" },
@@ -22,7 +22,6 @@ function Login({ onLogin }) {
   const handleLogin = async () => {
     setError("");
 
-    // 🔴 ADMIN LOGIN
     if (role === "admin") {
       const validAdmin = admins.find(
         (a) => a.email === email && a.password === password
