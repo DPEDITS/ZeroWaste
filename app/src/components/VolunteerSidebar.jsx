@@ -20,7 +20,7 @@ const VolunteerSidebar = () => {
 
       {/* Header */}
       <div className="sidebar-header">
-        <Link to="/" className="sidebar-logo">
+        <Link to="/volunteer/dashboard" className="sidebar-logo">
           <div className="sidebar-logo-icon">♻️</div>
           <span className="sidebar-logo-text">ZeroWaste</span>
         </Link>
