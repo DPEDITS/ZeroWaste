@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from "recharts";
 import VolunteerLayout from "../components/VolunteerLayout";
 import axios from "axios";
 
@@ -41,6 +42,25 @@ const VolunteerDashboard = () => {
           <div className="stat-card-icon delivered">✅</div>
           <div className="stat-card-number">{stats.delivered}</div>
           <div className="stat-card-label">Successful Deliveries</div>
+        </div>
+      </div>
+
+      <div style={{ marginTop: '2rem', padding: '1.5rem', background: 'white', borderRadius: '8px', boxShadow: '0 2px 10px rgba(0,0,0,0.05)' }}>
+        <h3 style={{ marginBottom: '1rem', color: '#374151' }}>My Progress</h3>
+        <div style={{ width: '100%', height: 300 }}>
+          <ResponsiveContainer>
+            <BarChart data={[
+              { name: 'Pending Pickups', count: stats.pending },
+              { name: 'My Deliveries', count: stats.delivered },
+            ]}>
+              <CartesianGrid strokeDasharray="3 3" />
+              <XAxis dataKey="name" />
+              <YAxis />
+              <Tooltip />
+              <Legend />
+              <Bar dataKey="count" fill="#10b981" />
+            </BarChart>
+          </ResponsiveContainer>
         </div>
       </div>
     </VolunteerLayout>

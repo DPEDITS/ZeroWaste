@@ -63,6 +63,14 @@ const VolunteerSidebar = () => {
           <span className="sidebar-link-icon">🚚</span>
           My Deliveries
         </Link>
+
+        <Link
+          to="/volunteer/notifications"
+          className={`sidebar-link ${isActive("/volunteer/notifications") ? "active" : ""}`}
+        >
+          <span className="sidebar-link-icon">🔔</span>
+          Notifications
+        </Link>
       </nav>
 
       {/* Footer */}

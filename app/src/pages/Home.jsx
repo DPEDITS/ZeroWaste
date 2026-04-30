@@ -1,12 +1,12 @@
 import React, { useEffect, useState, useRef } from "react";
 import "../styles/home.css";
+import api from "../api/axios";
 
 import heroImg from "../assets/hero_food_donation.png";
 import donateImg from "../assets/donate_food.png";
 import deliveryImg from "../assets/delivery_volunteer.png";
 import impactImg from "../assets/community_impact.png";
 
-/* ── Animated Counter ── */
 const Counter = ({ target, label, icon, suffix = "+" }) => {
   const [count, setCount] = useState(0);
   const ref = useRef(null);
@@ -17,6 +17,10 @@ const Counter = ({ target, label, icon, suffix = "+" }) => {
       ([entry]) => {
         if (entry.isIntersecting && !started.current) {
           started.current = true;
+          if (target <= 0) {
+            setCount(0);
+            return;
+          }
           let start = 0;
           const duration = 2200;
           const stepTime = Math.max(Math.floor(duration / target), 20);
@@ -48,7 +52,6 @@ const Counter = ({ target, label, icon, suffix = "+" }) => {
   );
 };
 
-/* ── FAQ Item ── */
 const FAQItem = ({ question, answer }) => {
   const [open, setOpen] = useState(false);
   return (
@@ -64,12 +67,31 @@ const FAQItem = ({ question, answer }) => {
   );
 };
 
-/* ── Main Home Page ── */
 const Home = () => {
+  const [stats, setStats] = useState({
+    volunteers: 0,
+    donors: 0,
+    mealsSaved: 0,
+    communitiesServed: 0
+  });
+
+  useEffect(() => {
+    const fetchStats = async () => {
+      try {
+        const res = await api.get("/stats");
+        if (res.data.success) {
+          setStats(res.data.data);
+        }
+      } catch (err) {
+        console.error("Failed to fetch stats", err);
+      }
+    };
+    fetchStats();
+  }, []);
+
   return (
     <div>
 
-      {/* ═══════════ HERO ═══════════ */}
       <section className="ngo-hero">
         <div className="hero-grid">
 
@@ -106,7 +128,7 @@ const Home = () => {
                 <span className="trust-avatar">🧑</span>
               </div>
               <div className="trust-text">
-                <strong>350+ volunteers</strong> already making a difference
+                <strong>{stats.volunteers}+ volunteers</strong> already making a difference
               </div>
             </div>
           </div>
@@ -119,7 +141,7 @@ const Home = () => {
             <div className="hero-float-card">
               <div className="float-icon">🍱</div>
               <div className="float-info">
-                <span className="float-number">1,200+</span>
+                <span className="float-number">{stats.mealsSaved}+</span>
                 <span className="float-label">Meals saved this month</span>
               </div>
             </div>
@@ -128,17 +150,15 @@ const Home = () => {
         </div>
       </section>
 
-      {/* ═══════════ IMPACT STATS ═══════════ */}
       <section className="impact-strip">
         <div className="impact-grid">
-          <Counter target={1200} label="Meals Saved" icon="🍽️" />
-          <Counter target={350} label="Active Volunteers" icon="🙋" />
-          <Counter target={200} label="Food Donors" icon="🏪" />
-          <Counter target={50} label="Communities Served" icon="🏘️" />
+          <Counter target={stats.mealsSaved} label="Meals Saved" icon="🍽️" />
+          <Counter target={stats.volunteers} label="Active Volunteers" icon="🙋" />
+          <Counter target={stats.donors} label="Food Donors" icon="🏪" />
+          <Counter target={stats.communitiesServed} label="Communities Served" icon="🏘️" />
         </div>
       </section>
 
-      {/* ═══════════ ABOUT ═══════════ */}
       <section id="about" className="ngo-section about-section">
         <div className="about-layout">
 
@@ -310,7 +330,7 @@ const Home = () => {
           </p>
           <div className="cta-buttons">
             <a href="/signup" className="btn-cta-primary">
-              🌱 Join ZeroWaste
+              🍲 Join ZeroWaste
             </a>
             <a href="/login" className="btn-cta-secondary">
               Already a member? Login →

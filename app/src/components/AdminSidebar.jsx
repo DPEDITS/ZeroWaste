@@ -18,7 +18,7 @@ const AdminSidebar = () => {
       {/* Header */}
       <div className="sidebar-header">
         <Link to="/" className="sidebar-logo">
-          <div className="sidebar-logo-icon" style={{background: 'rgba(255,255,255,0.1)'}}>🛡️</div>
+          <div className="sidebar-logo-icon">♻️</div>
           <span className="sidebar-logo-text">ZeroWaste</span>
         </Link>
 
@@ -59,6 +59,14 @@ const AdminSidebar = () => {
         >
           <span className="sidebar-link-icon">🍱</span>
           Donations
+        </Link>
+
+        <Link
+          to="/admin/notifications"
+          className={`sidebar-link ${isActive("/admin/notifications") ? "active" : ""}`}
+        >
+          <span className="sidebar-link-icon">🔔</span>
+          Notifications
         </Link>
       </nav>
 

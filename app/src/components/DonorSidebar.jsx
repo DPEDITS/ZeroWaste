@@ -56,6 +56,14 @@ const DonorSidebar = () => {
           My Donations
         </Link>
 
+        <Link
+          to="/donor/notifications"
+          className={`sidebar-link ${isActive("/donor/notifications") ? "active" : ""}`}
+        >
+          <span className="sidebar-link-icon">🔔</span>
+          Notifications
+        </Link>
+
         <div className="sidebar-nav-label">Quick Actions</div>
 
         <Link

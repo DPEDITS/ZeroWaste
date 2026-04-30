@@ -6,6 +6,8 @@ import path from "path";
 import { fileURLToPath } from "url";
 import userRoutes from "./routes/userRoutes.js";
 import donationRoutes from "./routes/donationRoutes.js";
+import statsRoutes from "./routes/statsRoutes.js";
+import notificationRoutes from "./routes/notificationRoutes.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -21,6 +23,8 @@ app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 // Routes
 app.use("/api/users", userRoutes);
 app.use("/api/donations", donationRoutes);
+app.use("/api/stats", statsRoutes);
+app.use("/api/notifications", notificationRoutes);
 
 app.get("/", (req, res) => {
   res.send("API Running...");

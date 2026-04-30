@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from "recharts";
 import DonorLayout from "../components/DonorLayout";
 import axios from "axios";
 
@@ -57,6 +58,27 @@ const DonorDashboard = () => {
           <div className="stat-card-icon delivered">✅</div>
           <div className="stat-card-number">{stats.delivered}</div>
           <div className="stat-card-label">Delivered</div>
+        </div>
+      </div>
+
+      <div style={{ marginTop: '2rem', padding: '1.5rem', background: 'white', borderRadius: '8px', boxShadow: '0 2px 10px rgba(0,0,0,0.05)' }}>
+        <h3 style={{ marginBottom: '1rem', color: '#374151' }}>Donation Impact Progress</h3>
+        <div style={{ width: '100%', height: 300 }}>
+          <ResponsiveContainer>
+            <BarChart data={[
+              { name: 'Total Donations', count: stats.total },
+              { name: 'Pending', count: stats.pending },
+              { name: 'Picked Up', count: stats.picked },
+              { name: 'Delivered', count: stats.delivered },
+            ]}>
+              <CartesianGrid strokeDasharray="3 3" />
+              <XAxis dataKey="name" />
+              <YAxis />
+              <Tooltip />
+              <Legend />
+              <Bar dataKey="count" fill="#f59e0b" />
+            </BarChart>
+          </ResponsiveContainer>
         </div>
       </div>
     </DonorLayout>
