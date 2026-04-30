@@ -19,28 +19,56 @@ const AdminDonations = () => {
 
   return (
     <AdminLayout>
-      <h2>Donations Management</h2>
+      <div className="admin-action-bar">
+        <div>
+          <h1 className="admin-page-title">Donations Management</h1>
+          <p className="admin-page-subtitle">Monitor all food donations across the platform</p>
+        </div>
+      </div>
+
       <div className="mt-4">
         {donations.length === 0 ? (
-          <p>No donations available.</p>
+          <div className="admin-empty-state">
+            <div className="empty-icon">🍱</div>
+            <div className="empty-title">No donations available</div>
+            <div className="empty-desc">There are currently no donations on the platform.</div>
+          </div>
         ) : (
-          <div className="row">
+          <div className="donations-grid">
             {donations.map((donation) => (
-              <div key={donation._id} className="col-md-4 mb-4">
-                <div className="card p-3 shadow-sm h-100">
-                  <h5>{donation.foodItem}</h5>
-                  <p className="mb-1 text-muted">Quantity: {donation.quantity}</p>
-                  <p className="mb-1">Donor: {donation.donorName}</p>
-                  <p className="mb-1">Address: {donation.donorAddress}</p>
-                  <div className="mt-auto pt-3">
-                    <span className={`badge ${donation.status === "delivered" ? "bg-success" : donation.status === "picked" ? "bg-info" : "bg-warning"}`}>
-                      {donation.status.toUpperCase()}
-                    </span>
-                    {donation.volunteer && (
-                      <p className="mt-2 mb-0 small text-muted">Volunteer: {donation.volunteer.name}</p>
-                    )}
+              <div key={donation._id} className="donation-card">
+                <div className="donation-card-header">
+                  <div className="donation-card-food">
+                    <div className="food-icon-box" style={{background: '#f3f4f6'}}>🍱</div>
+                    <div>
+                      <h5 className="food-title">{donation.foodItem}</h5>
+                      <div className="food-date">Donor: {donation.donorName}</div>
+                    </div>
+                  </div>
+                  <span className={`donation-status-badge badge-${donation.status}`}>
+                    {donation.status}
+                  </span>
+                </div>
+                
+                <div className="donation-details">
+                  <div className="detail-pill">
+                    <span className="detail-pill-icon">⚖️</span>
+                    {donation.quantity}
+                  </div>
+                  <div className="detail-pill">
+                    <span className="detail-pill-icon">📍</span>
+                    {donation.donorAddress}
                   </div>
                 </div>
+
+                {donation.volunteer && (
+                  <div className="volunteer-info mt-auto" style={{background: '#f8fafc', borderColor: '#e2e8f0'}}>
+                    <div className="volunteer-info-header">
+                      <span className="volunteer-check">👤</span>
+                      <span className="volunteer-name">Volunteer: {donation.volunteer.name}</span>
+                    </div>
+                  </div>
+                )}
               </div>
             ))}
           </div>

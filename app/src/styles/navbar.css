@@ -1,25 +1,30 @@
-/* Navbar base */
+/* ============================================================
+   ZEROWASTE NGO — NAVBAR
+   Clean, professional, warm design
+   ============================================================ */
+
 .custom-navbar {
   position: fixed;
   top: 0;
   width: 100%;
-  padding: 10px 30px; /* 🔥 reduced height */
+  padding: 0;
   z-index: 1000;
-
-  background: rgba(11, 15, 26, 0.7);
-  backdrop-filter: blur(8px);
-
-  transition: all 0.3s ease;
+  background: transparent;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* On scroll */
 .custom-navbar.scrolled {
-  background: rgba(11, 15, 26, 0.95);
-  box-shadow: 0 3px 12px rgba(0,0,0,0.25);
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: saturate(180%) blur(20px);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.06), 0 4px 20px rgba(0, 0, 0, 0.04);
 }
 
-/* Layout */
+/* Nav Container */
 .nav-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 16px 40px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -27,94 +32,166 @@
 
 /* Logo */
 .logo {
-  font-size: 18px; /* 🔥 slightly smaller */
+  font-size: 20px;
   text-decoration: none;
-  font-weight: 600;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'Inter', sans-serif;
+  letter-spacing: -0.02em;
+  transition: opacity 0.2s ease;
+}
+
+.logo:hover {
+  opacity: 0.85;
 }
 
 .logo-text {
-  background: linear-gradient(90deg, #7b61ff, #ff4fd8);
+  background: linear-gradient(135deg, #2e7d32, #43a047);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
-/* Links */
+.custom-navbar.scrolled .logo-text {
+  background: linear-gradient(135deg, #1b5e20, #2e7d32);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Nav Links */
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
 .nav-links a {
-  margin: 0 12px;
-  color: #ccc;
+  color: rgba(255, 255, 255, 0.75);
   text-decoration: none;
   font-weight: 500;
   font-size: 14px;
+  font-family: 'Inter', sans-serif;
+  padding: 8px 16px;
+  border-radius: 10px;
+  transition: all 0.2s ease;
+  letter-spacing: -0.01em;
   position: relative;
 }
 
-/* 🔥 underline animation */
 .nav-links a::after {
-  content: "";
-  position: absolute;
-  bottom: -4px;
-  left: 0;
-  width: 0%;
-  height: 2px;
-  background: #ff4fd8;
-  transition: 0.3s;
-}
-
-.nav-links a:hover::after {
-  width: 100%;
+  display: none;
 }
 
 .nav-links a:hover {
-  color: white;
+  color: #fff;
+  background: rgba(255, 255, 255, 0.1);
 }
 
-/* Buttons */
+.custom-navbar.scrolled .nav-links a {
+  color: #555;
+}
+
+.custom-navbar.scrolled .nav-links a:hover {
+  color: #1a1a1a;
+  background: rgba(0, 0, 0, 0.04);
+}
+
+/* Nav Actions */
 .nav-actions {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
 }
 
-/* Login */
+/* Login Button */
 .login-btn {
-  color: white;
+  color: rgba(255, 255, 255, 0.85);
   text-decoration: none;
   font-size: 14px;
+  font-weight: 500;
+  font-family: 'Inter', sans-serif;
+  padding: 8px 16px;
+  border-radius: 10px;
+  transition: all 0.2s ease;
 }
 
 .login-btn:hover {
-  color: #ff4fd8;
+  color: #fff;
+  background: rgba(255, 255, 255, 0.1);
 }
 
-/* Signup */
+.custom-navbar.scrolled .login-btn {
+  color: #555;
+}
+
+.custom-navbar.scrolled .login-btn:hover {
+  color: #1a1a1a;
+  background: rgba(0, 0, 0, 0.04);
+}
+
+/* Signup Button */
 .signup-btn {
-  background: linear-gradient(90deg, #7b61ff, #ff4fd8);
-  padding: 5px 14px; /* 🔥 smaller */
-  border-radius: 18px;
-  color: white;
+  background: linear-gradient(135deg, #43a047, #2e7d32);
+  padding: 9px 22px;
+  border-radius: 10px;
+  color: #fff;
   text-decoration: none;
   font-size: 14px;
-  transition: 0.2s;
+  font-weight: 600;
+  font-family: 'Inter', sans-serif;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(46, 125, 50, 0.3);
 }
 
 .signup-btn:hover {
   transform: translateY(-1px);
-  opacity: 0.9;
+  box-shadow: 0 4px 16px rgba(46, 125, 50, 0.4);
+  background: linear-gradient(135deg, #4caf50, #388e3c);
 }
 
-/* User */
+.custom-navbar.scrolled .signup-btn {
+  background: linear-gradient(135deg, #43a047, #2e7d32);
+}
+
+/* User Name */
 .user-name {
-  color: #fff;
+  color: rgba(255, 255, 255, 0.9);
   font-size: 14px;
+  font-weight: 500;
+  font-family: 'Inter', sans-serif;
 }
 
-/* Logout */
+.custom-navbar.scrolled .user-name {
+  color: #1a1a1a;
+}
+
+/* Logout Button */
 .logout-btn {
-  background: #ff4d4d;
-  border: none;
-  padding: 5px 10px;
-  border-radius: 8px;
-  color: white;
+  background: rgba(255, 59, 48, 0.1);
+  border: 1px solid rgba(255, 59, 48, 0.2);
+  padding: 7px 16px;
+  border-radius: 10px;
+  color: #ff3b30;
   cursor: pointer;
   font-size: 13px;
+  font-weight: 500;
+  font-family: 'Inter', sans-serif;
+  transition: all 0.2s ease;
+}
+
+.logout-btn:hover {
+  background: rgba(255, 59, 48, 0.15);
+  border-color: rgba(255, 59, 48, 0.35);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .nav-container {
+    padding: 12px 20px;
+  }
+
+  .nav-links {
+    display: none;
+  }
 }

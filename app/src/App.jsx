@@ -28,7 +28,8 @@ const Layout = ({ children }) => {
   const isAdminPage = location.pathname.startsWith("/admin");
   const isVolunteerPage = location.pathname.startsWith("/volunteer");
   const isDonorPage = location.pathname.startsWith("/donor");
-  const isDashboard = isAdminPage || isVolunteerPage || isDonorPage;
+  const isAuthPage = location.pathname === "/login" || location.pathname === "/signup";
+  const isDashboard = isAdminPage || isVolunteerPage || isDonorPage || isAuthPage;
 
   return (
     <div style={{ display: "flex", flexDirection: "column", minHeight: "100vh" }}>

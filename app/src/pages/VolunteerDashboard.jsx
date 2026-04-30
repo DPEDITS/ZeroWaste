@@ -25,19 +25,22 @@ const VolunteerDashboard = () => {
 
   return (
     <VolunteerLayout>
-      <h2>Volunteer Dashboard</h2>
-      <div className="row mt-4">
-        <div className="col-md-4">
-          <div className="card p-3 text-center bg-info text-white shadow-sm">
-            <h3>{stats.pending}</h3>
-            <p>Pending Pickups</p>
-          </div>
+      <div className="vol-page-header">
+        <h1 className="vol-page-title">Volunteer Dashboard</h1>
+        <p className="vol-page-subtitle">Track your deliveries and community impact</p>
+      </div>
+
+      <div className="vol-stats-grid">
+        <div className="vol-stat-card pending">
+          <div className="stat-card-icon pending">⏳</div>
+          <div className="stat-card-number">{stats.pending}</div>
+          <div className="stat-card-label">Pending Pickups Available</div>
         </div>
-        <div className="col-md-4">
-          <div className="card p-3 text-center bg-success text-white shadow-sm">
-            <h3>{stats.delivered}</h3>
-            <p>Successful Deliveries</p>
-          </div>
+
+        <div className="vol-stat-card delivered">
+          <div className="stat-card-icon delivered">✅</div>
+          <div className="stat-card-number">{stats.delivered}</div>
+          <div className="stat-card-label">Successful Deliveries</div>
         </div>
       </div>
     </VolunteerLayout>

@@ -10,10 +10,8 @@ const DonorDashboard = () => {
       try {
         const user = JSON.parse(localStorage.getItem("user"));
         if (!user) return;
-        
+
         const res = await axios.get("http://localhost:5000/api/donations/all");
-        // For now, filter donations by donorName matching user's name since we don't have donorId on donation model
-        // Ideal way would be to have donor reference in donation model
         const myDonations = res.data.filter(d => d.donorName === user.name);
 
         setStats({
@@ -31,31 +29,34 @@ const DonorDashboard = () => {
 
   return (
     <DonorLayout>
-      <h2>Donor Dashboard</h2>
-      <div className="row mt-4">
-        <div className="col-md-3 mb-3">
-          <div className="card p-3 text-center bg-primary text-white shadow-sm">
-            <h3>{stats.total}</h3>
-            <p>Total Donations</p>
-          </div>
+      <div className="donor-page-header">
+        <h1 className="donor-page-title">Donor Dashboard</h1>
+        <p className="donor-page-subtitle">Track your food donations and overall impact</p>
+      </div>
+
+      <div className="donor-stats-grid">
+        <div className="donor-stat-card total">
+          <div className="stat-card-icon total">📊</div>
+          <div className="stat-card-number">{stats.total}</div>
+          <div className="stat-card-label">Total Donations</div>
         </div>
-        <div className="col-md-3 mb-3">
-          <div className="card p-3 text-center bg-warning text-dark shadow-sm">
-            <h3>{stats.pending}</h3>
-            <p>Awaiting Pickup</p>
-          </div>
+
+        <div className="donor-stat-card pending">
+          <div className="stat-card-icon pending">⏳</div>
+          <div className="stat-card-number">{stats.pending}</div>
+          <div className="stat-card-label">Awaiting Pickup</div>
         </div>
-        <div className="col-md-3 mb-3">
-          <div className="card p-3 text-center bg-info text-white shadow-sm">
-            <h3>{stats.picked}</h3>
-            <p>Picked Up</p>
-          </div>
+
+        <div className="donor-stat-card picked">
+          <div className="stat-card-icon picked">🚚</div>
+          <div className="stat-card-number">{stats.picked}</div>
+          <div className="stat-card-label">Picked Up</div>
         </div>
-        <div className="col-md-3 mb-3">
-          <div className="card p-3 text-center bg-success text-white shadow-sm">
-            <h3>{stats.delivered}</h3>
-            <p>Delivered</p>
-          </div>
+
+        <div className="donor-stat-card delivered">
+          <div className="stat-card-icon delivered">✅</div>
+          <div className="stat-card-number">{stats.delivered}</div>
+          <div className="stat-card-label">Delivered</div>
         </div>
       </div>
     </DonorLayout>

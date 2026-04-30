@@ -5,7 +5,6 @@ import axios from "axios";
 const VolunteerDonations = () => {
   const [donations, setDonations] = useState([]);
   const [file, setFile] = useState(null);
-  const [uploadingId, setUploadingId] = useState(null);
 
   useEffect(() => {
     fetchDonations();
@@ -51,7 +50,6 @@ const VolunteerDonations = () => {
       });
       alert("Proof uploaded successfully!");
       setFile(null);
-      setUploadingId(null);
       fetchDonations();
     } catch (err) {
       alert("Upload failed!");
@@ -61,42 +59,66 @@ const VolunteerDonations = () => {
 
   return (
     <VolunteerLayout>
-      <h2>Assigned Food Pickups</h2>
-      <div className="mt-4">
+      <div className="vol-action-bar">
+        <div>
+          <h1 className="vol-page-title">Assigned Pickups</h1>
+          <p className="vol-page-subtitle">View available food donations and manage your active deliveries</p>
+        </div>
+      </div>
+
+      <div className="donations-grid">
         {donations.length === 0 ? (
-          <p>No donations available for pickup.</p>
+          <div className="vol-empty-state">
+            <div className="empty-icon">🍽️</div>
+            <div className="empty-title">No donations available</div>
+            <div className="empty-desc">Check back later for new food pickup opportunities.</div>
+          </div>
         ) : (
           donations.map((donation) => (
-            <div key={donation._id} className="card p-3 mb-3 shadow-sm">
-              <div className="d-flex justify-content-between align-items-center">
-                <div>
-                  <h5>{donation.foodItem}</h5>
-                  <p className="mb-1 text-muted">Quantity: {donation.quantity}</p>
-                  <p className="mb-1 text-muted">Donor: {donation.donorName}</p>
-                  <p className="mb-0 text-muted">Address: {donation.donorAddress}</p>
-                  <span className={`badge mt-2 ${donation.status === "pending" ? "bg-warning" : "bg-primary"}`}>
-                    {donation.status.toUpperCase()}
-                  </span>
+            <div key={donation._id} className="donation-card">
+              <div className="donation-card-header">
+                <div className="donation-card-food">
+                  <div className="food-icon-box">🍱</div>
+                  <div>
+                    <h5 className="food-title">{donation.foodItem}</h5>
+                    <div className="food-date">Donor: {donation.donorName}</div>
+                  </div>
                 </div>
-                <div>
+                <span className={`donation-status-badge badge-${donation.status}`}>
+                  {donation.status}
+                </span>
+              </div>
+              
+              <div className="donation-details">
+                <div className="detail-pill">
+                  <span className="detail-pill-icon">⚖️</span>
+                  {donation.quantity}
+                </div>
+                <div className="detail-pill">
+                  <span className="detail-pill-icon">📍</span>
+                  {donation.donorAddress}
+                </div>
+              </div>
+
+              <div className="volunteer-info" style={{background: 'transparent', border: 'none', padding: 0}}>
                   {donation.status === "pending" ? (
-                    <button className="btn btn-primary" onClick={() => handleAccept(donation._id)}>Accept Pickup</button>
+                    <button className="btn-add-donation w-100 justify-content-center" onClick={() => handleAccept(donation._id)}>🤝 Accept Pickup</button>
                   ) : (
-                    <div className="text-end">
-                      <input 
-                        type="file" 
-                        className="form-control form-control-sm mb-2" 
+                    <div className="mt-3">
+                      <input
+                        type="file"
+                        className="vol-form-input mb-2 p-2"
                         onChange={handleFileChange}
                       />
-                      <button 
-                        className="btn btn-success btn-sm"
+                      <button
+                        className="btn-add-donation w-100 justify-content-center"
+                        style={{background: 'linear-gradient(135deg, #2563eb, #1d4ed8)'}}
                         onClick={() => handleUpload(donation._id)}
                       >
-                        Upload Proof & Complete
+                        ✅ Upload Proof & Complete
                       </button>
                     </div>
                   )}
-                </div>
               </div>
             </div>
           ))

@@ -23,30 +23,36 @@ const MyDeliveries = () => {
 
   return (
     <VolunteerLayout>
-      <h2>My Successful Deliveries</h2>
+      <div className="vol-action-bar">
+        <div>
+          <h1 className="vol-page-title">My Successful Deliveries</h1>
+          <p className="vol-page-subtitle">A record of your impactful contributions</p>
+        </div>
+      </div>
+
       <div className="mt-4">
         {deliveries.length === 0 ? (
-          <p>You haven't completed any deliveries yet.</p>
+          <div className="vol-empty-state">
+            <div className="empty-icon">🚚</div>
+            <div className="empty-title">No completed deliveries yet</div>
+            <div className="empty-desc">Once you complete a pickup, it will show up here.</div>
+          </div>
         ) : (
-          <div className="row">
+          <div className="donations-grid">
             {deliveries.map((delivery) => (
-              <div key={delivery._id} className="col-md-6 mb-4">
-                <div className="card shadow-sm h-100">
-                  <img 
-                    src={`http://localhost:5000/uploads/${delivery.proofImage}`} 
-                    className="card-img-top" 
-                    alt="Proof of Delivery" 
-                    style={{ height: "200px", objectFit: "cover" }}
-                  />
-                  <div className="card-body">
-                    <h5 className="card-title">{delivery.foodItem}</h5>
-                    <p className="card-text text-muted">
-                      Delivered to the poor. <br/>
-                      Donor: {delivery.donorName} <br/>
-                      Address: {delivery.donorAddress}
-                    </p>
-                    <span className="badge bg-success">Delivered</span>
+              <div key={delivery._id} className="donation-card" style={{padding: 0, overflow: 'hidden'}}>
+                <img
+                  src={`http://localhost:5000/uploads/${delivery.proofImage}`}
+                  alt="Proof of Delivery"
+                  style={{ height: "200px", objectFit: "cover", width: '100%' }}
+                />
+                <div style={{padding: '20px'}}>
+                  <div className="donation-card-header mb-2">
+                    <h5 className="food-title m-0">{delivery.foodItem}</h5>
+                    <span className="donation-status-badge badge-delivered">Delivered</span>
                   </div>
+                  <p className="food-date mb-2">Donor: {delivery.donorName}</p>
+                  <p className="food-date mb-0">Address: {delivery.donorAddress}</p>
                 </div>
               </div>
             ))}

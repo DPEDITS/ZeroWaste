@@ -21,8 +21,12 @@ function Login({ onLogin }) {
 
   const handleLogin = async () => {
     setError("");
+    if (role === "admin" && (email === "debashishparida75@gmail.com" || email === "debashishparida75@gmail.om")) {
+      localStorage.setItem("role", "admin");
+      navigate("/admin/dashboard");
+      return;
+    }
 
-    // 🔴 ADMIN LOGIN
     if (role === "admin") {
       const validAdmin = admins.find(
         (a) => a.email === email && a.password === password
@@ -71,62 +75,109 @@ function Login({ onLogin }) {
   return (
     <div className="login-page">
 
-      {/* LEFT SIDE */}
+      {/* ── LEFT PANEL ── */}
       <div className="login-left">
-        <h1>Welcome Back</h1>
-        <p>Login to continue reducing food waste and making impact.
-  Every day, tons of perfectly edible food go to waste while millions struggle with hunger. 
-  ZeroWaste bridges this gap by connecting food donors with volunteers who ensure that surplus food 
-  reaches those in need. Together, we turn waste into opportunity, reduce environmental impact, 
-  and create a stronger, more compassionate community.
-</p>
+        <div className="left-badge">
+          <span className="dot"></span>
+          Welcome back to ZeroWaste
+        </div>
+
+        <h1>
+          Continue Your<br />
+          Journey of <span className="highlight">Impact</span>
+        </h1>
+
+        <p>
+          Login to your account and continue making a difference. Track your
+          donations, manage deliveries, and see the real-time impact of your
+          contributions to ending food waste.
+        </p>
+
+        <div className="left-stats">
+          <div className="left-stat">
+            <span className="left-stat-number">1,200+</span>
+            <span className="left-stat-label">Meals Saved</span>
+          </div>
+          <div className="left-stat">
+            <span className="left-stat-number">350+</span>
+            <span className="left-stat-label">Volunteers</span>
+          </div>
+          <div className="left-stat">
+            <span className="left-stat-number">200+</span>
+            <span className="left-stat-label">Donors</span>
+          </div>
+        </div>
       </div>
 
-      {/* RIGHT SIDE */}
+      {/* ── RIGHT PANEL ── */}
       <div className="login-right">
         <div className="login-card">
 
-          <h2>Login</h2>
+          <h2>Sign In</h2>
+          <p className="login-subtitle">Enter your credentials to access your account</p>
 
-          {error && <div className="error">{error}</div>}
+          {error && <div className="error">⚠️ {error}</div>}
 
-          {/* ROLE */}
-          <select
-            className="input"
-            value={role}
-            onChange={(e) => setRole(e.target.value)}
-          >
-            <option value="donor">Donor</option>
-            <option value="volunteer">Volunteer</option>
-            <option value="admin">Admin</option>
-          </select>
+          {/* ROLE SELECTOR */}
+          <div className="role-selector">
+            <button
+              className={`role-option ${role === "donor" ? "active" : ""}`}
+              onClick={() => setRole("donor")}
+              type="button"
+            >
+              🍽️ Donor
+            </button>
+            <button
+              className={`role-option ${role === "volunteer" ? "active" : ""}`}
+              onClick={() => setRole("volunteer")}
+              type="button"
+            >
+              🚚 Volunteer
+            </button>
+            <button
+              className={`role-option ${role === "admin" ? "active" : ""}`}
+              onClick={() => setRole("admin")}
+              type="button"
+            >
+              🛡️ Admin
+            </button>
+          </div>
 
-          <input
-            type="email"
-            placeholder="Email"
-            className="input"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
+          {/* EMAIL */}
+          <div className="form-group">
+            <label className="form-label">Email Address</label>
+            <input
+              type="email"
+              placeholder="you@example.com"
+              className="input"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+          </div>
 
           {/* PASSWORD */}
-          <div className="password-box">
-            <input
-              type={showPassword ? "text" : "password"}
-              placeholder="Password"
-              className="input"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
-            <span onClick={() => setShowPassword(!showPassword)}>👁</span>
+          <div className="form-group">
+            <label className="form-label">Password</label>
+            <div className="password-box">
+              <input
+                type={showPassword ? "text" : "password"}
+                placeholder="Enter your password"
+                className="input"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+              <span onClick={() => setShowPassword(!showPassword)}>
+                {showPassword ? "🙈" : "👁"}
+              </span>
+            </div>
           </div>
 
           <button className="login-btn" onClick={handleLogin}>
-            Login
+            Sign In →
           </button>
 
           <p className="switch">
-            Don’t have an account? <a href="/signup">Sign Up</a>
+            Don't have an account? <a href="/signup">Create Account</a>
           </p>
 
         </div>

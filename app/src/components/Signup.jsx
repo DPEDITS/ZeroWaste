@@ -38,78 +38,133 @@ function Signup() {
 
   return (
     <div className="signup-page">
+
+      {/* ── LEFT PANEL ── */}
       <div className="signup-left">
-        <h1>From Waste to Worth.</h1>
+        <div className="left-badge">
+          <span className="dot"></span>
+          Join the movement
+        </div>
+
+        <h1>
+          From Waste<br />
+          to <span className="highlight">Worth</span>
+        </h1>
+
         <p>
-          Join ZeroWaste and help turn surplus food into meaningful impact.
-          Every day, tons of perfectly edible food go to waste while millions struggle with hunger. 
-          ZeroWaste bridges this gap by connecting food donors with volunteers who ensure that surplus food 
-          reaches those in need. Together, we turn waste into opportunity, reduce environmental impact, 
-          and create a stronger, more compassionate community.
+          Join ZeroWaste and help turn surplus food into meaningful impact. 
+          Whether you're donating food or volunteering for deliveries, your 
+          contribution creates a stronger, more compassionate community.
         </p>
+
+        <div className="left-features">
+          <div className="left-feature-item">
+            <span className="lf-icon">🌍</span>
+            <span>Reduce food waste in your community</span>
+          </div>
+          <div className="left-feature-item">
+            <span className="lf-icon">🤝</span>
+            <span>Connect with donors and volunteers</span>
+          </div>
+          <div className="left-feature-item">
+            <span className="lf-icon">📊</span>
+            <span>Track your real-time impact</span>
+          </div>
+          <div className="left-feature-item">
+            <span className="lf-icon">❤️</span>
+            <span>Help feed families in need</span>
+          </div>
+        </div>
       </div>
 
+      {/* ── RIGHT PANEL ── */}
       <div className="signup-right">
         <div className="signup-card">
-          <h2>Create Account</h2>
 
-          {message && <div className="alert alert-success">{message}</div>}
-          {error && <div className="alert alert-danger">{error}</div>}
+          <h2>Create Account</h2>
+          <p className="signup-subtitle">Join the community making a difference</p>
+
+          {message && <div className="alert alert-success">✅ {message}</div>}
+          {error && <div className="alert alert-danger">⚠️ {error}</div>}
 
           <form onSubmit={handleSignup}>
-            <input 
-              type="text" 
-              placeholder="Full Name" 
-              className="input" 
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              required
-            />
 
-            <input 
-              type="email" 
-              placeholder="Email" 
-              className="input" 
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-            />
+            {/* ROLE SELECTOR */}
+            <div className="role-selector">
+              <button
+                className={`role-option ${role === "donor" ? "active" : ""}`}
+                onClick={() => setRole("donor")}
+                type="button"
+              >
+                🍽️ Donor
+              </button>
+              <button
+                className={`role-option ${role === "volunteer" ? "active" : ""}`}
+                onClick={() => setRole("volunteer")}
+                type="button"
+              >
+                🚚 Volunteer
+              </button>
+            </div>
 
-            <select
-              className="input"
-              value={role}
-              onChange={(e) => setRole(e.target.value)}
-            >
-              <option value="donor">Donor</option>
-              <option value="volunteer">Volunteer</option>
-            </select>
-
-            <div className="password-box">
-              <input
-                type={showPassword ? "text" : "password"}
-                placeholder="Password"
-                className="input"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
+            {/* NAME */}
+            <div className="form-group">
+              <label className="form-label">Full Name</label>
+              <input 
+                type="text" 
+                placeholder="Enter your full name" 
+                className="input" 
+                value={name}
+                onChange={(e) => setName(e.target.value)}
                 required
               />
-              <span onClick={() => setShowPassword(!showPassword)}>
-                👁
-              </span>
+            </div>
+
+            {/* EMAIL */}
+            <div className="form-group">
+              <label className="form-label">Email Address</label>
+              <input 
+                type="email" 
+                placeholder="you@example.com" 
+                className="input" 
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+              />
+            </div>
+
+            {/* PASSWORD */}
+            <div className="form-group">
+              <label className="form-label">Password</label>
+              <div className="password-box">
+                <input
+                  type={showPassword ? "text" : "password"}
+                  placeholder="Create a strong password"
+                  className="input"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  required
+                />
+                <span onClick={() => setShowPassword(!showPassword)}>
+                  {showPassword ? "🙈" : "👁"}
+                </span>
+              </div>
             </div>
 
             <button type="submit" className="signup-btn">
-              Create Account
+              🌱 Create Account
             </button>
           </form>
 
           <p className="switch">
-            Already have an account? <a href="/login">Login</a>
+            Already have an account? <a href="/login">Sign In</a>
           </p>
+
         </div>
       </div>
+
     </div>
   );
 }
 
-export default Signup;
+export default Signup;

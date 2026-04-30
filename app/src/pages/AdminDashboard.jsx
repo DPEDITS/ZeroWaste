@@ -29,31 +29,34 @@ const AdminDashboard = () => {
 
   return (
     <AdminLayout>
-      <h2>Dashboard Overview</h2>
-      <div className="row mt-4">
-        <div className="col-md-3">
-          <div className="card p-3 text-center shadow-sm">
-            <h3>{stats.users}</h3>
-            <p>Total Users</p>
-          </div>
+      <div className="admin-page-header">
+        <h1 className="admin-page-title">Dashboard Overview</h1>
+        <p className="admin-page-subtitle">Monitor platform metrics and activity</p>
+      </div>
+
+      <div className="admin-stats-grid">
+        <div className="admin-stat-card total">
+          <div className="stat-card-icon total">👥</div>
+          <div className="stat-card-number">{stats.users}</div>
+          <div className="stat-card-label">Total Users</div>
         </div>
-        <div className="col-md-3">
-          <div className="card p-3 text-center shadow-sm">
-            <h3>{stats.donations}</h3>
-            <p>Total Donations</p>
-          </div>
+
+        <div className="admin-stat-card pending">
+          <div className="stat-card-icon pending">🍱</div>
+          <div className="stat-card-number">{stats.donations}</div>
+          <div className="stat-card-label">Total Donations</div>
         </div>
-        <div className="col-md-3">
-          <div className="card p-3 text-center shadow-sm">
-            <h3>{stats.volunteers}</h3>
-            <p>Volunteers</p>
-          </div>
+
+        <div className="admin-stat-card picked">
+          <div className="stat-card-icon picked">🚚</div>
+          <div className="stat-card-number">{stats.volunteers}</div>
+          <div className="stat-card-label">Active Volunteers</div>
         </div>
-        <div className="col-md-3">
-          <div className="card p-3 text-center shadow-sm">
-            <h3>{stats.delivered}</h3>
-            <p>Delivered</p>
-          </div>
+
+        <div className="admin-stat-card delivered">
+          <div className="stat-card-icon delivered">✅</div>
+          <div className="stat-card-number">{stats.delivered}</div>
+          <div className="stat-card-label">Successful Deliveries</div>
         </div>
       </div>
     </AdminLayout>

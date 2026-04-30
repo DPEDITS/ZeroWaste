@@ -1,7 +1,10 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
+import "../styles/donor.css";
 
 const DonorSidebar = () => {
   const navigate = useNavigate();
+  const location = useLocation();
+  const user = JSON.parse(localStorage.getItem("user"));
 
   const logout = () => {
     localStorage.removeItem("role");
@@ -10,19 +13,68 @@ const DonorSidebar = () => {
     navigate("/login");
   };
 
+  const isActive = (path) => location.pathname === path;
+
   return (
-    <div className="bg-dark text-white p-3 vh-100" style={{ width: "250px" }}>
-      <h4>Donor Panel</h4>
+    <aside className="donor-sidebar">
 
-      <ul className="nav flex-column mt-4">
-        <li><Link to="/donor/dashboard" className="nav-link text-white">Dashboard</Link></li>
-        <li><Link to="/donor/donations" className="nav-link text-white">My Donations</Link></li>
-      </ul>
+      {/* Header */}
+      <div className="sidebar-header">
+        <Link to="/" className="sidebar-logo">
+          <div className="sidebar-logo-icon">♻️</div>
+          <span className="sidebar-logo-text">ZeroWaste</span>
+        </Link>
 
-      <button className="btn btn-danger w-100 mt-5" onClick={logout}>
-        Logout
-      </button>
-    </div>
+        <div className="sidebar-user">
+          <div className="sidebar-avatar">
+            {user?.name?.[0]?.toUpperCase() || "D"}
+          </div>
+          <div className="sidebar-user-info">
+            <div className="sidebar-user-name">{user?.name || "Donor"}</div>
+            <div className="sidebar-user-role">Food Donor</div>
+          </div>
+        </div>
+      </div>
+
+      {/* Navigation */}
+      <nav className="sidebar-nav">
+        <div className="sidebar-nav-label">Main Menu</div>
+
+        <Link
+          to="/donor/dashboard"
+          className={`sidebar-link ${isActive("/donor/dashboard") ? "active" : ""}`}
+        >
+          <span className="sidebar-link-icon">📊</span>
+          Dashboard
+        </Link>
+
+        <Link
+          to="/donor/donations"
+          className={`sidebar-link ${isActive("/donor/donations") ? "active" : ""}`}
+        >
+          <span className="sidebar-link-icon">🍽️</span>
+          My Donations
+        </Link>
+
+        <div className="sidebar-nav-label">Quick Actions</div>
+
+        <Link
+          to="/donor/donations"
+          className="sidebar-link"
+        >
+          <span className="sidebar-link-icon">➕</span>
+          Donate Food
+        </Link>
+      </nav>
+
+      {/* Footer */}
+      <div className="sidebar-footer">
+        <button className="sidebar-logout" onClick={logout}>
+          🚪 Sign Out
+        </button>
+      </div>
+
+    </aside>
   );
 };
 
