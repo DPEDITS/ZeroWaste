@@ -40,6 +40,9 @@ function Signup() {
     <div className="signup-page">
 
       <div className="signup-left">
+        <div className="bg"></div>
+        <div className="bg bg2"></div>
+        <div className="bg bg3"></div>
         <div className="left-badge">
           <span className="dot"></span>
           Join the movement

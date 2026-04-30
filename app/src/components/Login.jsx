@@ -61,6 +61,9 @@ function Login({ onLogin }) {
   return (
     <div className="login-page">
       <div className="login-left">
+        <div className="bg"></div>
+        <div className="bg bg2"></div>
+        <div className="bg bg3"></div>
         <div className="left-badge">
           Welcome back to ZeroWaste
         </div>
