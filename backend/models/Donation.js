@@ -28,7 +28,7 @@ const donationSchema = new mongoose.Schema(
       ref: "User",
     },
     proofImage: {
-      type: String, // Store the filename or URL
+      type: String,
     },
   },
   { timestamps: true }

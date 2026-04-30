@@ -12,9 +12,6 @@ const generateToken = (id) => {
   });
 };
 
-// @route   POST /api/auth/signup
-// @desc    Register a new admin
-// @access  Public (Alternatively, this could be protected so only admins can create admins)
 router.post('/signup', async (req, res) => {
   const { username, email, password } = req.body;
 
@@ -49,9 +46,7 @@ router.post('/signup', async (req, res) => {
   }
 });
 
-// @route   POST /api/auth/login
-// @desc    Auth admin & get token
-// @access  Public
+
 router.post('/login', async (req, res) => {
   const { username, password } = req.body;
 
@@ -72,10 +67,6 @@ router.post('/login', async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 });
-
-// @route   GET /api/auth/me
-// @desc    Get current admin profile
-// @access  Private
 router.get('/me', protect, async (req, res) => {
   const admin = await Admin.findById(req.admin._id).select('-password');
   if (admin) {

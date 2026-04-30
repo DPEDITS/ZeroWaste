@@ -2,7 +2,6 @@ import Donation from "../models/Donation.js";
 import multer from "multer";
 import path from "path";
 
-// Multer Storage Configuration
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
     cb(null, "uploads/");
@@ -14,7 +13,6 @@ const storage = multer.diskStorage({
 
 export const upload = multer({ storage });
 
-// Create a donation
 export const createDonation = async (req, res) => {
   try {
     const { foodItem, quantity, donorName, donorAddress } = req.body;
@@ -31,7 +29,6 @@ export const createDonation = async (req, res) => {
   }
 };
 
-// Get all donations
 export const getDonations = async (req, res) => {
   try {
     const donations = await Donation.find().populate("volunteer", "name email");
@@ -41,7 +38,6 @@ export const getDonations = async (req, res) => {
   }
 };
 
-// Assign volunteer to donation
 export const assignVolunteer = async (req, res) => {
   try {
     const { donationId, volunteerId } = req.body;
